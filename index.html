@@ -19,12 +19,14 @@
             --ps-dark-gray: #5C6B80;
             --ps-white: #FFFFFF;
             --ps-orange: #FF6B35;
+            --ps-green: #2E7D32;
+            --ps-red: #C62828;
             --ps-light-orange: #FFF8F0;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8fafc;
+            background: #f5f7fa;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -39,7 +41,7 @@
             max-width: 900px;
             background: var(--ps-white);
             border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             position: relative;
             display: grid;
@@ -55,22 +57,22 @@
             grid-area: header;
             background: var(--ps-blue);
             color: var(--ps-white);
-            padding: 30px;
+            padding: 25px 30px;
             text-align: center;
             position: relative;
             border-bottom: 5px solid var(--ps-orange);
         }
         
         .header h1 {
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 700;
             letter-spacing: 1.5px;
         }
         
         .close-btn {
             position: absolute;
-            top: 25px;
-            right: 25px;
+            top: 20px;
+            right: 20px;
             width: 40px;
             height: 40px;
             background: rgba(255,255,255,0.15);
@@ -93,46 +95,44 @@
         .content-section {
             grid-area: main;
             padding: 30px;
-            border-right: 1px solid rgba(0,0,0,0.08);
         }
         
         .alert-box {
             background: var(--ps-light-orange);
             border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
+            padding: 20px;
+            margin-bottom: 25px;
             border-left: 4px solid var(--ps-orange);
             display: flex;
             align-items: center;
         }
         
         .alert-icon {
-            font-size: 32px;
+            font-size: 28px;
             color: var(--ps-orange);
-            margin-right: 20px;
+            margin-right: 15px;
             min-width: 40px;
             text-align: center;
         }
         
         .alert-content h2 {
             color: var(--ps-orange);
-            font-size: 26px;
-            margin-bottom: 10px;
+            font-size: 22px;
+            margin-bottom: 5px;
         }
         
         .alert-content p {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 500;
-            color: #5C6B80;
         }
         
         .domain-highlight {
             display: block;
-            background: rgba(255,107,53,0.08);
-            padding: 15px 25px;
+            background: rgba(255,107,53,0.1);
+            padding: 15px 20px;
             border-radius: 8px;
-            margin: 25px 0;
-            font-size: 22px;
+            margin: 20px 0;
+            font-size: 20px;
             font-weight: 700;
             color: var(--ps-blue);
             border-left: 4px solid var(--ps-orange);
@@ -141,10 +141,9 @@
         
         .details-grid {
             display: grid;
-            grid-template-columns: 140px 1fr;
-            gap: 15px;
-            margin: 30px 0;
-            font-size: 17px;
+            grid-template-columns: 120px 1fr;
+            gap: 12px;
+            margin: 25px 0;
         }
         
         .detail-label {
@@ -152,35 +151,35 @@
             color: var(--ps-blue);
             display: flex;
             align-items: center;
-            padding: 10px 0;
+            font-size: 16px;
         }
         
         .detail-label i {
-            margin-right: 12px;
-            width: 24px;
+            margin-right: 8px;
+            width: 20px;
             text-align: center;
-            font-size: 18px;
         }
         
         .detail-value {
             padding: 10px 0;
             border-bottom: 1px dashed #E0E0E0;
             font-weight: 500;
+            font-size: 16px;
         }
         
         .help-section {
             grid-area: help;
             padding: 30px;
             background: var(--ps-gray);
-            position: relative;
+            border-left: 1px solid #e0e0e0;
         }
         
         .help-title {
             color: var(--ps-blue);
-            font-size: 28px;
+            font-size: 24px;
             margin-bottom: 25px;
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: 10px;
         }
         
         .help-title:after {
@@ -188,24 +187,24 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 70px;
-            height: 4px;
+            width: 60px;
+            height: 3px;
             background: var(--ps-orange);
             border-radius: 3px;
         }
         
         .help-steps {
-            margin: 30px 0;
+            margin: 25px 0;
             counter-reset: step-counter;
-            list-style: none;
             padding-left: 0;
+            list-style-type: none; /* Remove default numbering */
         }
         
         .help-steps li {
             position: relative;
-            padding-left: 50px;
-            margin-bottom: 25px;
-            line-height: 1.6;
+            padding-left: 40px;
+            margin-bottom: 20px;
+            line-height: 1.5;
             font-size: 17px;
         }
         
@@ -215,8 +214,8 @@
             position: absolute;
             left: 0;
             top: 0;
-            width: 34px;
-            height: 34px;
+            width: 28px;
+            height: 28px;
             background: var(--ps-orange);
             color: white;
             border-radius: 50%;
@@ -224,7 +223,7 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 14px;
         }
         
         .help-link {
@@ -233,19 +232,19 @@
             justify-content: center;
             background: var(--ps-orange);
             color: white;
-            padding: 16px 32px;
+            padding: 14px 28px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            margin: 25px 0;
+            margin: 20px 0;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(255,107,53,0.3);
             border: none;
             cursor: pointer;
-            gap: 12px;
+            gap: 10px;
             width: 100%;
             text-align: center;
-            font-size: 18px;
+            font-size: 17px;
         }
         
         .help-link:hover {
@@ -257,43 +256,43 @@
         .contact-box {
             background: white;
             border-radius: 10px;
-            padding: 25px;
-            margin-top: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            padding: 20px;
+            margin-top: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
         
         .contact-title {
             font-weight: 700;
             color: var(--ps-blue);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 20px;
+            gap: 10px;
+            font-size: 18px;
         }
         
         .contact-info {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 10px 0;
-            font-size: 17px;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 16px;
         }
         
         .contact-info i {
             color: var(--ps-orange);
-            font-size: 20px;
-            width: 28px;
+            font-size: 18px;
+            width: 24px;
             text-align: center;
         }
         
         .footer {
             grid-area: footer;
             background: var(--ps-blue);
-            padding: 18px;
+            padding: 15px;
             text-align: center;
-            font-size: 16px;
-            color: rgba(255,255,255,0.85);
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -302,20 +301,40 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             font-weight: 600;
             color: white;
-            font-size: 17px;
         }
         
         .logo-icon {
             background: var(--ps-orange);
-            width: 36px;
-            height: 36px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "header"
+                    "main"
+                    "help"
+                    "footer";
+            }
+            
+            .content-section {
+                border-right: none;
+                border-bottom: 1px solid rgba(0,0,0,0.08);
+            }
+            
+            .help-section {
+                border-left: none;
+                border-top: 1px solid #e0e0e0;
+            }
         }
     </style>
 </head>
@@ -341,44 +360,44 @@
             </div>
             
             <p>Access to the following website has been restricted:</p>
-            <span class="domain-highlight" id="blocked-domain">Loading...</span>
+            <span class="domain-highlight" id="blocked-domain">example.com</span>
             
             <div class="details-grid">
                 <div class="detail-label">
                     <i class="fas fa-user"></i>
                     <span>User:</span>
                 </div>
-                <div class="detail-value" id="user-detail">Loading...</div>
+                <div class="detail-value" id="user-detail">john.doe@company.com</div>
                 
                 <div class="detail-label">
                     <i class="fas fa-exclamation-triangle"></i>
                     <span>Reason:</span>
                 </div>
-                <div class="detail-value" id="reason-detail">Loading...</div>
+                <div class="detail-value" id="reason-detail">Security Policy Violation</div>
                 
                 <div class="detail-label">
                     <i class="fas fa-code"></i>
                     <span>Reason Code:</span>
                 </div>
-                <div class="detail-value" id="reason-code">Loading...</div>
+                <div class="detail-value" id="reason-code">SEC-403</div>
                 
                 <div class="detail-label">
                     <i class="fas fa-tag"></i>
                     <span>URL Category:</span>
                 </div>
-                <div class="detail-value" id="category-detail">Loading...</div>
+                <div class="detail-value" id="category-detail">High Risk</div>
                 
                 <div class="detail-label">
                     <i class="fas fa-link"></i>
                     <span>URL:</span>
                 </div>
-                <div class="detail-value" id="full-url">Loading...</div>
+                <div class="detail-value" id="full-url">https://example.com/restricted-page</div>
                 
                 <div class="detail-label">
                     <i class="fas fa-calendar-alt"></i>
                     <span>Date:</span>
                 </div>
-                <div class="detail-value" id="date-time">Loading...</div>
+                <div class="detail-value" id="date-time">30/2/2023, 13:05:58 pm</div>
             </div>
         </div>
         
@@ -421,4 +440,44 @@
         </div>
     </div>
 
-   
+    <script>
+        // Parse URL parameters from Zscaler
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+            const results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Populate the page with Zscaler parameters
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get parameters from URL
+            const url = getParameterByName('url');
+            const reason = getParameterByName('reason');
+            const reasoncode = getParameterByName('reasoncode');
+            const cat = getParameterByName('cat');
+            const user = getParameterByName('user');
+            const datetime = new Date().toLocaleString();
+            
+            // Extract domain from URL
+            let domain = '';
+            try {
+                domain = new URL(url).hostname.replace('www.', '');
+            } catch (e) {
+                domain = url;
+            }
+            
+            // Update page elements
+            document.getElementById('blocked-domain').textContent = domain;
+            document.getElementById('user-detail').textContent = user || 'Not available';
+            document.getElementById('reason-detail').textContent = reason || 'Not specified';
+            document.getElementById('reason-code').textContent = reasoncode || 'N/A';
+            document.getElementById('category-detail').textContent = cat || 'Not categorized';
+            document.getElementById('full-url').textContent = url || 'Not available';
+            document.getElementById('date-time').textContent = datetime;
+        });
+    </script>
+</body>
+</html>

@@ -4,265 +4,421 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Access Restricted - Persistent Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Updated Color Scheme */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
-            --ps-orange: #FF6B35;  /* Persistent Orange */
-            --ps-black: #000000;   /* Black */
-            --ps-dark-gray: #292929;
-            --ps-light-gray: #f5f5f5;
-            --ps-white: #ffffff;
+            --ps-blue: #1A3A5F;
+            --ps-light-blue: #2C5A8F;
+            --ps-gray: #F0F4F8;
+            --ps-dark-gray: #5C6B80;
+            --ps-white: #FFFFFF;
+            --ps-orange: #FF6B35;
+            --ps-light-orange: #FFF8F0;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--ps-white);
-            margin: 0;
+            background: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             padding: 20px;
             color: var(--ps-dark-gray);
             line-height: 1.6;
         }
         
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: var(--ps-white);
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+            background: var(--ps-white);
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
             overflow: hidden;
-            border: 1px solid #e0e0e0;
             position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas:
+                "header header"
+                "main help"
+                "footer footer";
         }
         
         .header {
-            background-color: var(--ps-black);
+            grid-area: header;
+            background: var(--ps-blue);
             color: var(--ps-white);
-            padding: 20px;
+            padding: 30px;
             text-align: center;
+            position: relative;
             border-bottom: 5px solid var(--ps-orange);
         }
         
         .header h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: 600;
-        }
-        
-        .content {
-            padding: 30px;
-        }
-        
-        .block-title {
-            color: var(--ps-orange);
-            font-size: 22px;
-            margin-bottom: 20px;
-        }
-        
-        .block-message {
-            background-color: var(--ps-light-gray);
-            border-left: 4px solid var(--ps-orange);
-            padding: 15px;
-            margin-bottom: 25px;
-            border-radius: 0 4px 4px 0;
-            font-weight: bold;
-        }
-        
-        .domain-highlight {
-            font-size: 20px;
-            font-weight: bold;
-            color: var(--ps-orange);
-            margin: 15px 0;
-            display: block;
-        }
-        
-        .details-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-        }
-        
-        .details-table td {
-            padding: 12px;
-            border-bottom: 1px solid #e0e0e0;
-            vertical-align: top;
-        }
-        
-        .details-table tr:last-child td {
-            border-bottom: none;
-        }
-        
-        .detail-label {
-            font-weight: 600;
-            color: var(--ps-orange);
-            width: 30%;
-        }
-        
-        .help-section {
-            background-color: #fff8f8;
-            border-left: 4px solid var(--ps-orange);
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 0 4px 4px 0;
-        }
-        
-        .help-title {
-            color: var(--ps-orange);
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-        
-        .help-steps {
-            padding-left: 20px;
-            margin: 15px 0;
-        }
-        
-        .help-steps li {
-            margin-bottom: 10px;
-        }
-        
-        .help-link {
-            display: inline-block;
-            background-color: var(--ps-orange);
-            color: var(--ps-white);
-            padding: 12px 25px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: background-color 0.3s;
-        }
-        
-        .help-link:hover {
-            background-color: #e05a2b;
-        }
-        
-        .footer {
-            background-color: var(--ps-light-gray);
-            padding: 15px;
-            text-align: center;
-            font-size: 14px;
-            color: #666;
-            border-top: 1px solid #e0e0e0;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
         }
         
         .close-btn {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: none;
+            top: 25px;
+            right: 25px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.15);
             border: none;
-            font-size: 20px;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
             cursor: pointer;
-            color: var(--ps-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
         }
         
-        .contact-label {
+        .close-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+        
+        .content-section {
+            grid-area: main;
+            padding: 30px;
+            border-right: 1px solid rgba(0,0,0,0.08);
+        }
+        
+        .alert-box {
+            background: var(--ps-light-orange);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--ps-orange);
+            display: flex;
+            align-items: center;
+        }
+        
+        .alert-icon {
+            font-size: 32px;
+            color: var(--ps-orange);
+            margin-right: 20px;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .alert-content h2 {
+            color: var(--ps-orange);
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+        
+        .alert-content p {
+            font-size: 18px;
+            font-weight: 500;
+            color: #5C6B80;
+        }
+        
+        .domain-highlight {
+            display: block;
+            background: rgba(255,107,53,0.08);
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ps-blue);
+            border-left: 4px solid var(--ps-orange);
+            text-align: center;
+        }
+        
+        .details-grid {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 15px;
+            margin: 30px 0;
+            font-size: 17px;
+        }
+        
+        .detail-label {
+            font-weight: 700;
+            color: var(--ps-blue);
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+        }
+        
+        .detail-label i {
+            margin-right: 12px;
+            width: 24px;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        .detail-value {
+            padding: 10px 0;
+            border-bottom: 1px dashed #E0E0E0;
+            font-weight: 500;
+        }
+        
+        .help-section {
+            grid-area: help;
+            padding: 30px;
+            background: var(--ps-gray);
+            position: relative;
+        }
+        
+        .help-title {
+            color: var(--ps-blue);
+            font-size: 28px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .help-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: var(--ps-orange);
+            border-radius: 3px;
+        }
+        
+        .help-steps {
+            margin: 30px 0;
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .help-steps li {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 17px;
+        }
+        
+        .help-steps li:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 34px;
+            height: 34px;
+            background: var(--ps-orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .help-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--ps-orange);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 25px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255,107,53,0.3);
+            border: none;
+            cursor: pointer;
+            gap: 12px;
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        .help-link:hover {
+            background: #E05A2B;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255,107,53,0.4);
+        }
+        
+        .contact-box {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        
+        .contact-title {
+            font-weight: 700;
+            color: var(--ps-blue);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            font-size: 17px;
+        }
+        
+        .contact-info i {
+            color: var(--ps-orange);
+            font-size: 20px;
+            width: 28px;
+            text-align: center;
+        }
+        
+        .footer {
+            grid-area: footer;
+            background: var(--ps-blue);
+            padding: 18px;
+            text-align: center;
+            font-size: 16px;
+            color: rgba(255,255,255,0.85);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            color: white;
+            font-size: 17px;
+        }
+        
+        .logo-icon {
+            background: var(--ps-orange);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <button class="close-btn" onclick="window.close()">×</button>
+        <button class="close-btn" onclick="window.close()">
+            <i class="fas fa-times"></i>
+        </button>
+        
         <div class="header">
             <h1>PERSISTENT SYSTEMS</h1>
         </div>
         
-        <div class="content">
-            <div class="block-message">
-                The content you are trying to access is blocked.
+        <div class="content-section">
+            <div class="alert-box">
+                <div class="alert-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="alert-content">
+                    <h2>Access Restricted</h2>
+                    <p>The content you are trying to access is blocked.</p>
+                </div>
             </div>
             
             <p>Access to the following website has been restricted:</p>
             <span class="domain-highlight" id="blocked-domain">Loading...</span>
             
-            <table class="details-table">
-                <tr>
-                    <td class="detail-label">User:</td>
-                    <td id="user-detail">Loading...</td>
-                    <td class="detail-label">Reason:</td>
-                    <td id="reason-detail">Loading...</td>
-                </tr>
-                <tr>
-                    <td class="detail-label">Reason Code:</td>
-                    <td id="reason-code">Loading...</td>
-                    <td class="detail-label">URL Category:</td>
-                    <td id="category-detail">Loading...</td>
-                </tr>
-                <tr>
-                    <td class="detail-label">URL:</td>
-                    <td colspan="3" id="full-url">Loading...</td>
-                </tr>
-                <tr>
-                    <td class="detail-label">Date:</td>
-                    <td colspan="3" id="date-time">Loading...</td>
-                </tr>
-            </table>
+            <div class="details-grid">
+                <div class="detail-label">
+                    <i class="fas fa-user"></i>
+                    <span>User:</span>
+                </div>
+                <div class="detail-value" id="user-detail">Loading...</div>
+                
+                <div class="detail-label">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Reason:</span>
+                </div>
+                <div class="detail-value" id="reason-detail">Loading...</div>
+                
+                <div class="detail-label">
+                    <i class="fas fa-code"></i>
+                    <span>Reason Code:</span>
+                </div>
+                <div class="detail-value" id="reason-code">Loading...</div>
+                
+                <div class="detail-label">
+                    <i class="fas fa-tag"></i>
+                    <span>URL Category:</span>
+                </div>
+                <div class="detail-value" id="category-detail">Loading...</div>
+                
+                <div class="detail-label">
+                    <i class="fas fa-link"></i>
+                    <span>URL:</span>
+                </div>
+                <div class="detail-value" id="full-url">Loading...</div>
+                
+                <div class="detail-label">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Date:</span>
+                </div>
+                <div class="detail-value" id="date-time">Loading...</div>
+            </div>
+        </div>
+        
+        <div class="help-section">
+            <h2 class="help-title">Need Access for Business Purposes?</h2>
+            <p>If this resource is required for legitimate business activities:</p>
             
-            <div class="help-section">
-                <div class="help-title">Need Access for Business Purposes?</div>
-                <p>If this resource is required for legitimate business activities:</p>
-                
-                <ol class="help-steps">
-                    <li>Visit the Global Helpdesk Portal to submit an access request</li>
-                    <li>Include all reference information shown above in your request</li>
-                    <li>Provide a business justification for the access requirement</li>
-                </ol>
-                
-                <a href="https://globalhelpdesk.persistent.com" class="help-link">Submit Access Request</a>
+            <ol class="help-steps">
+                <li>Visit the Global Helpdesk Portal to submit an access request</li>
+                <li>Include all reference information shown above in your request</li>
+                <li>Provide a business justification for the access requirement</li>
+            </ol>
+            
+            <a href="https://globalhelpdesk.persistent.com" class="help-link">
+                <i class="fas fa-paper-plane"></i>
+                Submit Access Request
+            </a>
+            
+            <div class="contact-box">
+                <h3 class="contact-title">
+                    <i class="fas fa-life-ring"></i>
+                    Support Contact
+                </h3>
                 
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <span class="contact-label">Email Support:</span>
-                        <span>GlobalIT-ZscalerOperations@persistent.com</span>
-                    </div>
+                    <i class="fas fa-envelope"></i>
+                    <span>GlobalIT-ZscalerOperations@persistent.com</span>
                 </div>
             </div>
         </div>
         
         <div class="footer">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <span>Secure Access Portal</span>
+            </div>
             <div>&copy; <script>document.write(new Date().getFullYear())</script> Persistent Systems Ltd. All rights reserved.</div>
         </div>
     </div>
 
-    <script>
-        // Parse URL parameters from Zscaler
-        function getParameterByName(name, url = window.location.href) {
-            name = name.replace(/[\[\]]/g, '\\$&');
-            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
-            const results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, ' '));
-        }
-
-        // Populate the page with Zscaler parameters
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get parameters from URL
-            const url = getParameterByName('url');
-            const reason = getParameterByName('reason');
-            const reasoncode = getParameterByName('reasoncode');
-            const cat = getParameterByName('cat');
-            const user = getParameterByName('user');
-            const datetime = new Date().toLocaleString();
-            
-            // Extract domain from URL
-            let domain = '';
-            try {
-                domain = new URL(url).hostname.replace('www.', '');
-            } catch (e) {
-                domain = url;
-            }
-            
-            // Update page elements
-            document.getElementById('blocked-domain').textContent = domain;
-            document.getElementById('user-detail').textContent = user || 'Not available';
-            document.getElementById('reason-detail').textContent = reason || 'Not specified';
-            document.getElementById('reason-code').textContent = reasoncode || 'N/A';
-            document.getElementById('category-detail').textContent = cat || 'Not categorized';
-            document.getElementById('full-url').textContent = url || 'Not available';
-            document.getElementById('date-time').textContent = datetime;
-        });
-    </script>
-</body>
-</html>
+   

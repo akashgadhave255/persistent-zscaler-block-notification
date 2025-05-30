@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Restricted - Persistent Systems</title>
+    <style>
+        /* Persistent Systems Brand Colors */
+        :root {
+            --ps-blue: #0033a0;
+            --ps-red: #e31837;
+            --ps-light-blue: #e6f0ff;
+            --ps-dark-gray: #4a4a4a;
+            --ps-light-gray: #f5f7fa;
+            --ps-white: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--ps-light-gray);
+            margin: 0;
+            padding: 20px;
+            color: var(--ps-dark-gray);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--ps-white);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background-color: var(--ps-blue);
+            color: var(--ps-white);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--ps-red);
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .header .tagline {
+            font-size: 16px;
+            font-weight: 300;
+            margin-top: 5px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .block-title {
+            color: var(--ps-red);
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        
+        .block-message {
+            background-color: var(--ps-light-blue);
+            border-left: 4px solid var(--ps-blue);
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .domain-highlight {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--ps-blue);
+            margin: 15px 0;
+            display: block;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            gap: 10px;
+        }
+        
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--ps-blue);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .checkbox.checked::before {
+            content: "✓";
+            color: var(--ps-blue);
+            font-weight: bold;
+        }
+        
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+        
+        .details-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+        }
+        
+        .details-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: var(--ps-blue);
+            width: 30%;
+        }
+        
+        .help-section {
+            background-color: #fff8f8;
+            border-left: 4px solid var(--ps-red);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .help-title {
+            color: var(--ps-red);
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .help-steps {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .help-steps li {
+            margin-bottom: 10px;
+        }
+        
+        .help-link {
+            display: inline-block;
+            background-color: var(--ps-blue);
+            color: var(--ps-white);
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        
+        .help-link:hover {
+            background-color: #00257a;
+        }
+        
+        .contact-info {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
+        }
+        
+        .contact-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-label {
+            font-weight: 600;
+            color: var(--ps-blue);
+        }
+        
+        .footer {
+            background-color: var(--ps-light-gray);
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .zscaler-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+            font-weight: 600;
+            color: var(--ps-blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>PERSISTENT SYSTEMS</h1>
+            <div class="tagline">Meaningful Innovation</div>
+        </div>
+        
+        <div class="content">
+            <div class="block-title">
+                Access to This Website is Restricted
+            </div>
+            
+            <div class="block-message">
+                The content you are trying to access is blocked in accordance with Persistent Systems security policies to protect our digital assets and ensure compliance.
+            </div>
+            
+            <p>Access to the following website has been restricted:</p>
+            <span class="domain-highlight" id="blocked-domain">Loading...</span>
+            
+            <div class="checkbox-item">
+                <div class="checkbox"></div>
+                <div>Not allowed under the IT Services usage policy</div>
+            </div>
+            
+            <div class="checkbox-item">
+                <div class="checkbox checked"></div>
+                <a href="https://www.persistent.com/company/internet-usage-policy" style="color: var(--ps-blue); text-decoration: none; font-weight: 600;">See our Internet Usage Policy</a>
+            </div>
+            
+            <table class="details-table">
+                <tr>
+                    <td class="detail-label">User:</td>
+                    <td id="user-detail">Loading...</td>
+                    <td class="detail-label">Reason:</td>
+                    <td id="reason-detail">Loading...</td>
+                </tr>
+                <tr>
+                    <td class="detail-label">Reason Code:</td>
+                    <td id="reason-code">Loading...</td>
+                    <td class="detail-label">URL Category:</td>
+                    <td id="category-detail">Loading...</td>
+                </tr>
+                <tr>
+                    <td class="detail-label">URL:</td>
+                    <td colspan="3" id="full-url">Loading...</td>
+                </tr>
+                <tr>
+                    <td class="detail-label">Date:</td>
+                    <td colspan="3" id="date-time">Loading...</td>
+                </tr>
+            </table>
+            
+            <div class="help-section">
+                <div class="help-title">Need Access for Business Purposes?</div>
+                <p>If this resource is required for legitimate business activities:</p>
+                
+                <ol class="help-steps">
+                    <li>Visit the Global Helpdesk Portal to submit a formal access request</li>
+                    <li>Include all reference information shown above in your request</li>
+                    <li>Provide a business justification for the access requirement</li>
+                    <li>Your request will be reviewed by the security team within 24 hours</li>
+                </ol>
+                
+                <a href="https://globalhelpdesk.persistent.com" class="help-link">Submit Access Request</a>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-label">Email Support:</span>
+                        <span>GlobalIT-ZscalerOperations@persistent.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Reference Code:</span>
+                        <span style="font-weight: 600;" id="reference-code">Loading...</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Helpdesk Phone:</span>
+                        <span>+1 (888) 123-4567</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div>&copy; <script>document.write(new Date().getFullYear())</script> Persistent Systems Ltd. All rights reserved.</div>
+            <div class="zscaler-brand">
+                Secured by Zscaler Cloud Security
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Parse URL parameters from Zscaler
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+            const results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Populate the page with Zscaler parameters
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get parameters from URL
+            const url = getParameterByName('url');
+            const reason = getParameterByName('reason');
+            const reasoncode = getParameterByName('reasoncode');
+            const cat = getParameterByName('cat');
+            const user = getParameterByName('user');
+            const datetime = new Date().toLocaleString();
+            
+            // Extract domain from URL
+            let domain = '';
+            try {
+                domain = new URL(url).hostname.replace('www.', '');
+            } catch (e) {
+                domain = url;
+            }
+            
+            // Update page elements
+            document.getElementById('blocked-domain').textContent = domain;
+            document.getElementById('user-detail').textContent = user || 'Not available';
+            document.getElementById('reason-detail').textContent = reason || 'Not specified';
+            document.getElementById('reason-code').textContent = reasoncode || 'N/A';
+            document.getElementById('category-detail').textContent = cat || 'Not categorized';
+            document.getElementById('full-url').textContent = url || 'Not available';
+            document.getElementById('date-time').textContent = datetime;
+            document.getElementById('reference-code').textContent = reasoncode || 'N/A';
+            
+            // Make reference code copyable
+            const refCodeElement = document.getElementById('reference-code');
+            refCodeElement.style.cursor = 'pointer';
+            refCodeElement.addEventListener('click', function() {
+                const textToCopy = this.textContent;
+                navigator.clipboard.writeText(textToCopy)
+                    .then(() => {
+                        const originalText = this.textContent;
+                        this.textContent = 'Copied!';
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                        }, 2000);
+                    });
+            });
+        });
+    </script>
+</body>
+</html>

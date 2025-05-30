@@ -1,0 +1,10 @@
+/persistent-block-notification/
+├── index.html
+├── styles.css
+├── script.js
+├── assets/
+│   ├── logo.png
+│   ├── warning-icon.svg
+│   ├── background-pattern.png
+│   └── favicon.ico
+└── README.md
